@@ -1,5 +1,6 @@
 package com.elirex.currencydemo.data.source.local
 
+import com.elirex.currencydemo.data.mock.MockData.mockCurrencyEntities
 import com.elirex.currencydemo.data.source.local.db.CurrencyDao
 import com.elirex.currencydemo.data.source.local.db.CurrencyEntity
 import io.mockk.coEvery
@@ -34,17 +35,6 @@ class LocalDataSourceTest {
         val list = dataSource.getAllCurrencies(true)
         Assert.assertTrue(list.size == 3)
         Assert.assertEquals(list, mockCurrencyEntities.sortedBy { it.currencyId })
-    }
-
-
-    companion object {
-        val mockCurrencyEntities: List<CurrencyEntity> by lazy {
-            listOf(
-                CurrencyEntity("USD", "United States Dollar"),
-                CurrencyEntity("EUR", "Euro"),
-                CurrencyEntity("BTC", "Bitcoin"),
-            )
-        }
     }
 
 }
