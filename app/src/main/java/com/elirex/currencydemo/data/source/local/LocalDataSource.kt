@@ -9,12 +9,6 @@ class LocalDataSource @Inject constructor(
     private val dao: CurrencyDao,
 ): DataSource {
 
-    override suspend fun getAllCurrencies(sort: Boolean): List<CurrencyEntity> {
-        return if (sort) {
-            dao.queryAllCurrenciesByAscending()
-        } else {
-            dao.queryAllCurrencies()
-        }
-    }
+    override suspend fun getAllCurrencies(): List<CurrencyEntity> = dao.queryAllCurrencies()
 
 }

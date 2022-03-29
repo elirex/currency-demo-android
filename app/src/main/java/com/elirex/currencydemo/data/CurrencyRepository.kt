@@ -18,7 +18,7 @@ class CurrencyRepositoryImpl @Inject constructor(
     override suspend fun getAllCurrencies(): List<CurrencyInfo> {
         return jobController.joinPreviousOrRun {
             mutableListOf<CurrencyInfo>().apply {
-                dataSource.getAllCurrencies(false).forEach {
+                dataSource.getAllCurrencies().forEach {
                     add(CurrencyInfo(it.currencyId, it.name))
                 }
             }

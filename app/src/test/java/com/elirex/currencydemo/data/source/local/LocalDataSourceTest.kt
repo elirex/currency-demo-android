@@ -2,7 +2,6 @@ package com.elirex.currencydemo.data.source.local
 
 import com.elirex.currencydemo.data.mock.MockData.mockCurrencyEntities
 import com.elirex.currencydemo.data.source.local.db.CurrencyDao
-import com.elirex.currencydemo.data.source.local.db.CurrencyEntity
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runBlockingTest
@@ -25,16 +24,9 @@ class LocalDataSourceTest {
 
     @Test
     fun `test get all currencies`() = runBlockingTest {
-        val list = dataSource.getAllCurrencies(false)
+        val list = dataSource.getAllCurrencies()
         Assert.assertTrue(list.size == 3)
         Assert.assertEquals(list, mockCurrencyEntities)
-    }
-
-    @Test
-    fun `test get all sorted currencies `() = runBlockingTest {
-        val list = dataSource.getAllCurrencies(true)
-        Assert.assertTrue(list.size == 3)
-        Assert.assertEquals(list, mockCurrencyEntities.sortedBy { it.currencyId })
     }
 
 }

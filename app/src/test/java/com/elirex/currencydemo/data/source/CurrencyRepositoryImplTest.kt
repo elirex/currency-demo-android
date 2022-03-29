@@ -49,7 +49,7 @@ class CurrencyRepositoryImplTest {
     }
 
     class MockDataSource(var exception: Exception? = null) : DataSource {
-        override suspend fun getAllCurrencies(sort: Boolean): List<CurrencyEntity> {
+        override suspend fun getAllCurrencies(): List<CurrencyEntity> {
             if (exception != null) {
                 throw exception as Exception
             } else {
