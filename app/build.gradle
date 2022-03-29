@@ -18,6 +18,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        dataBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -44,8 +48,9 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$rootProject.ext.hiltVer"
     kapt "com.google.dagger:hilt-compiler:$rootProject.ext.hiltVer"
 
-    // gson
-    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVer"
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.ext.navigationVer"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.ext.navigationVer"
 
     // room
     implementation "androidx.room:room-runtime:$rootProject.ext.roomVer"
