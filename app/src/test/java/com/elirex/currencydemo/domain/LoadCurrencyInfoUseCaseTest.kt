@@ -1,17 +1,15 @@
 package com.elirex.currencydemo.domain
 
 import com.elirex.currencydemo.CoroutineRule
-import com.elirex.currencydemo.data.CurrencyRepository
+import com.elirex.currencydemo.data.mock.MockCurrencyRepository
 import com.elirex.currencydemo.data.mock.MockData.mockCurrencyInfoList
 import com.elirex.currencydemo.domain.currency.LoadCurrencyInfoUseCase
-import com.elirex.currencydemo.model.CurrencyInfo
 import com.elirex.currencydemo.result.Result
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.lang.Exception
 
 class LoadCurrencyInfoUseCaseTest {
 
@@ -41,14 +39,4 @@ class LoadCurrencyInfoUseCaseTest {
         Assert.assertTrue(result is Result.Error)
     }
 
-    class MockCurrencyRepository(var isFailed: Boolean = false) : CurrencyRepository {
-        override suspend fun getAllCurrencies(): List<CurrencyInfo> {
-            if (isFailed) {
-                throw Exception("Failed to get currencies")
-            } else {
-                return mockCurrencyInfoList
-            }
-        }
-
-    }
 }
