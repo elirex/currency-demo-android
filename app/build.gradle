@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -33,10 +35,33 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    testImplementation 'junit:junit:4.13.2'
+    implementation "androidx.core:core-ktx:$rootProject.ext.coreVer"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompatVer"
+    implementation "com.google.android.material:material:$rootProject.ext.materialVer"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayoutVer"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$rootProject.ext.hiltVer"
+    kapt "com.google.dagger:hilt-compiler:$rootProject.ext.hiltVer"
+
+    // gson
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVer"
+
+    // room
+    implementation "androidx.room:room-runtime:$rootProject.ext.roomVer"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.ext.roomVer"
+    kapt "androidx.room:room-compiler:$rootProject.ext.roomVer"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$rootProject.ext.timberVar"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.coroutinesVer"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.ext.testCoroutinesVer"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.ext.testCoreVer"
+    testImplementation "io.mockk:mockk:$rootProject.ext.testMokkVer"
+    testImplementation "junit:junit:$rootProject.ext.testJunitVer"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
